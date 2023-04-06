@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Miao Xu, UQ - Research Projects</title>
+    <link rel="stylesheet" href="./assets/css/styles.min.css">
+    <script src="./assets/js/effects.js"></script>
+</head>
+<body class = 'theme__bright'>
+    <!-- Nav bar -->
+    <div class="nav">
+        <!-- Desktop Nav Bar -->
+        <div class="nav_valid_space">
+            <div id = "nav_logo" class="nav__logo" onmouseenter = "shadow_fade(1, 'nav_logo')" onmouseleave="shadow_fade(0, 'nav_logo')">
+                <a herf="/" class="nav__logo-text">Dr. Miao Xu, UQ</a>
+            </div>
+            <!-- home -->
+            <div class="nav__selections">
+                <div class="item selected" onmouseenter = "navDecoline(1, 'nav_decoline_home')" onmouseleave="navDecoline(0, 'nav_decoline_home')">
+                    <a href="/">Home</a>
+                    <div id="nav_decoline_home" class="nav__decoline"></div>
+                </div>
+                <!-- publications -->
+                <div class="item" onmouseenter = "navDecoline(1, 'nav_decoline_publications')" onmouseleave="navDecoline(0, 'nav_decoline_publications')">
+                    <a href="/publications.html">Publications</a>
+                    <div id="nav_decoline_publications" class="nav__decoline"></div>
+                </div>
+                <!-- research projects -->
+                <div class="item" onmouseenter = "navDecoline(1, 'nav_decoline_project')" onmouseleave="navDecoline(0, 'nav_decoline_project')">
+                    <a href="/projects.html">Research Projects</a>
+                    <div id="nav_decoline_project" class="nav__decoline"></div>
+                </div>
+                <!-- awards-->
+                <div class="item" onmouseenter = "navDecoline(1, 'nav_decoline_awards')" onmouseleave="navDecoline(0, 'nav_decoline_awards')">
+                    <a href="/awards.html">Awards</a>
+                    <div id="nav_decoline_awards" class="nav__decoline"></div>
+                </div>
+                <!-- publications -->
+                <div class="item" onmouseenter = "navDecoline(1, 'nav_decoline_talk')" onmouseleave="navDecoline(0, 'nav_decoline_talk')">
+                    <a href="/invited_talk.html">Invited Talk</a>
+                    <div id="nav_decoline_talk" class="nav__decoline"></div>
+                </div>
+                <!-- Services -->
+                <div class="item" onmouseenter = "navDecoline(1, 'nav_decoline_services')" onmouseleave="navDecoline(0, 'nav_decoline_services')">
+                    <a href="/services.html">Services</a>
+                    <div id="nav_decoline_services" class="nav__decoline"></div>
+                </div>
+                <!-- students -->
+                <div class="item" onmouseenter = "navDecoline(1, 'nav_decoline_students')" onmouseleave="navDecoline(0, 'nav_decoline_students')">
+                    <a href="/students.html">Students</a>
+                    <div id="nav_decoline_students" class="nav__decoline"></div>
+                </div>
+                <!-- teaching -->
+                <div class="item" onmouseenter = "navDecoline(1, 'nav_decoline_teaching')" onmouseleave="navDecoline(0, 'nav_decoline_teaching')">
+                    <a href="/teaching.html">Teaching</a>
+                    <div id="nav_decoline_teaching" class="nav__decoline"></div>
+                </div>
+                <!-- code -->
+                <div class="item" onmouseenter = "navDecoline(1, 'nav_decoline_code')" onmouseleave="navDecoline(0, 'nav_decoline_code')">
+                    <a href="/code.html">Code</a>
+                    <div id="nav_decoline_code" class="nav__decoline"></div>
+                </div>                    
+            </div>
+        </div>
+
+        <!-- Mobile Nav menu -->
+        <div class="mobile__nav">
+            <button onclick = 'mobile_menu()'>
+                <svg id = 'menu_icon_1' class="mobile__menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+                <svg id = 'menu_icon_2' class="mobile__menu-icon hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            
+            <div class="mobile__logo">
+                <a herf="#" class="nav__logo-text">Dr. Miao Xu, UQ</a>
+            </div>
+        </div>
+    </div>
+    <!-- Mobile menu contents -->
+    <div id = 'mobile_menu_contents' class="hidden">
+        <div class="item">
+            <a href="/">Home</a>
+        </div>
+        <div class="item">
+            <a href="/publications.html">Publications</a>
+        </div>
+        <div class="item">
+            <a href="/projects.html">Research Projects</a>
+        </div>
+        <div class="item selected">
+            <a href="/awards.html">Awards</a>
+        </div>
+        <div class="item">
+            <a href="/invited_talk.html">Invited Talk</a>
+        </div>
+        <div class="item">
+            <a href="/services.html">Services</a>
+        </div>
+        <div class="item">
+            <a href="/students.html">Students</a>
+        </div>
+        <div class="item">
+            <a href="/teaching.html">Teaching</a>
+        </div>
+        <div class="item">
+            <a href="/code.html">Code</a>
+        </div>
+    </div>
+
+    <div class="main_page">
+        <div class="sections">
+            <h2>Awards</h2>
+            <ul>
+                <li>Awards 1</li>
+                <li>Awards 2</li>
+                <li>Awards 3</li>
+                <li>Awards 4</li>
+                <li>Awards 5</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
