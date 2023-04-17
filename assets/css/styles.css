@@ -15,7 +15,7 @@ html {
 
 a {
   text-decoration: none;
-  color: #4f4f72;
+  color: #0d6dcd;
 }
 
 .theme__dark {
@@ -27,7 +27,7 @@ a {
 }
 
 .theme__bright {
-  background-color: #e5e5e5;
+  background-color: #ffffff;
   color: #000;
   display: flex;
   justify-content: center;
@@ -44,7 +44,7 @@ a {
   width: 100%;
   padding: 1rem;
   height: 10rem;
-  background-color: #252439;
+  background-color: #51247a;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
   transition: all 0.5s ease;
 }
@@ -114,6 +114,10 @@ a {
   font-size: 2rem;
   font-weight: 500;
   color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .nav__selections .item a {
@@ -166,8 +170,8 @@ a {
 
 .mobile__menu-icon {
   display: block;
-  width: 5rem;
-  height: 5rem;
+  width: 3rem;
+  height: 3rem;
 }
 
 .hidden {
@@ -197,7 +201,7 @@ a {
   position: fixed;
   top: 6.66667rem;
   width: 100%;
-  background-color: #252439;
+  background-color: #51247a;
   border-radius: 0 0 1rem 1rem;
   padding-bottom: 1rem;
   opacity: 0;
@@ -225,9 +229,18 @@ a {
   opacity: 1;
 }
 
-.main_page {
+main {
   width: 130rem;
-  margin-top: 20rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 18rem;
+}
+
+.icon {
+  color: #000000;
+  vertical-align: middle;
 }
 
 .home {
@@ -238,27 +251,52 @@ a {
   height: 100%;
   box-sizing: border-box;
   font-size: 2.5rem;
-  color: #000;
+  color: #000000;
   margin-bottom: 8rem;
 }
 
+.home .left, .home .right {
+  width: 65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .home .portrait {
-  width: 50rem;
+  height: 45rem;
   border-radius: 2rem;
-  margin-right: 5rem;
 }
 
 .home .container {
-  margin-left: 5rem;
   font-size: 2rem;
-  font-family: 'PT Sans';
+  font-family: Roboto,Helvetica,Arial,sans-serif;
 }
 
 .home .container h2 {
-  font-family: 'PT Sans', sans-serif;
+  font-family: Montserrat,Helvetica,Arial,sans-serif;
   font-size: 5rem;
   font-weight: 700;
   color: #000;
+  padding-left: 5rem;
+  padding-bottom: 1.5rem;
+}
+
+.home .container table {
+  font-size: 2rem;
+}
+
+.home .container table tr td {
+  padding: 1.5rem 0;
+}
+
+.home .container table tr .column_1 {
+  text-align: center;
+  width: 4rem;
+}
+
+.home .container table tr .column_2 {
+  padding-left: 1rem;
 }
 
 .home .container ul {
@@ -272,38 +310,118 @@ a {
   margin: 1rem 0;
 }
 
+@media screen and (max-width: 1300px) {
+  .home .left {
+    width: 50%;
+    padding-left: 1rem;
+  }
+  .home .right {
+    width: 50%;
+    padding-right: 1rem;
+  }
+}
+
 @media screen and (max-width: 1124px) {
-  .main_page {
+  main {
     width: 100%;
-    margin-top: 10rem;
+    padding-top: 8.66667rem;
   }
   .home {
     flex-direction: column;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .home .left, .home .right {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .home .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .home .portrait {
     max-width: 50rem;
-    width: 90%;
+    height: 25rem;
     margin: 0 auto 5rem auto;
   }
   .home .container {
+    padding-left: 0;
     max-width: 90%;
     margin: 0;
     font-size: 1rem;
   }
   .home .container h2 {
     font-size: 3rem;
+    padding-bottom: 1rem;
+  }
+  .home .container table {
+    font-size: 1.8rem;
+  }
+  .home .container td {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
   .home .container ul {
     font-size: 1.8rem;
   }
 }
 
+section {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 2.5rem;
+  margin-bottom: 5rem;
+  padding-top: 2rem;
+  width: 100%;
+  display: block;
+}
+
+section ul {
+  margin-top: 2rem;
+  font-size: 2rem;
+  list-style-type: square;
+  list-style-position: inside;
+  box-sizing: border-box;
+}
+
+section ul li {
+  margin: 1rem 0;
+}
+
+section ol {
+  margin-top: 2rem;
+  font-size: 2rem;
+  list-style-type: decimal;
+  list-style-position: inside;
+  box-sizing: border-box;
+}
+
+section ol li {
+  margin: 1rem 0;
+}
+
+@media screen and (max-width: 1300px) {
+  section {
+    padding: 0 2rem;
+  }
+}
+
+@media screen and (max-width: 1124px) {
+  section {
+    padding: 0 5%;
+    max-width: 100%;
+  }
+}
+
 h2 {
-  font-family: 'PT Sans', sans-serif;
+  font-family: Montserrat,Helvetica,Arial,sans-serif;
   font-size: 5rem;
   font-weight: 700;
   color: #000;
-  font-size: 4rem;
+  font-size: 3.5rem;
 }
 
 @media screen and (max-width: 1124px) {
@@ -314,54 +432,22 @@ h2 {
 
 p {
   font-size: 2rem;
-  font-family: 'PT Sans';
+  font-family: Roboto,Helvetica,Arial,sans-serif;
   line-height: 1.5;
   margin-top: 2rem;
 }
 
-.sections {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  font-size: 2.5rem;
-  margin-bottom: 5rem;
-  display: block;
-}
-
-.sections ul {
-  margin-top: 2rem;
-  font-size: 2rem;
-  list-style-type: square;
-  list-style-position: inside;
-  box-sizing: border-box;
-}
-
-.sections ul li {
-  margin: 1rem 0;
-}
-
-.sections ol {
-  margin-top: 2rem;
-  font-size: 2rem;
-  list-style-type: decimal;
-  list-style-position: inside;
-  box-sizing: border-box;
-}
-
-.sections ol li {
-  margin: 1rem 0;
-}
-
 @media screen and (max-width: 1124px) {
-  .sections {
+  sections {
     padding: 0 5%;
     max-width: 90%;
   }
 }
 
-main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+.emphasis {
+  color: red;
+}
+
+.text_xl {
+  font-size: 2.5rem;
 }

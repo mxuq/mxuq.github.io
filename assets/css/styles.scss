@@ -1,6 +1,9 @@
 $main_bg_color: #252439;
 $main_text_color: #aaaaba;
+$nav_bg_color: #51247a;
 $text_white: #fff;
+$text_link: #0d6dcd;
+$text_emphasis: red;
 $shadow_white: 0 0 10px rgba(255, 255, 255, 0.1);
 $mobile_width: 1124px;
 $nav_low_padding_width: 1455px;
@@ -21,15 +24,36 @@ $bg_color_5: #f5f5f5;
 // darker that $bg_color_5
 $bg_color_6: #e5e5e5;
 
+$bg_color_white: #ffffff;
+$max_page_width: 130rem;
+$max_page_width_px: rem_to_px($max_page_width);
+
+@function rem_to_px($rem) {
+    @return $rem / 1rem * 10px; // divided by 1rem to remove the unit of $rem
+}
+
 @mixin flex_row($justify: center) {
     display: flex;
     justify-content: $justify;
     align-items: center;
 }
 
-@mixin flex_column() {
+@mixin flex_row($justify: center) {
     display: flex;
+    justify-content: $justify;
     align-items: center;
+}
+
+@mixin flex_column($toLeft: false) {
+    display: flex;
+    // align to left
+    @if $toLeft {
+        align-items: flex-start;
+    }
+    // align to center
+    @else {
+        align-items: center;
+    }
     justify-content: center;
     flex-direction: column;
 }
@@ -62,7 +86,7 @@ $bg_color_6: #e5e5e5;
 }
 
 @mixin h2_font() {
-    font-family: 'PT Sans', sans-serif;
+    font-family: Montserrat,Helvetica,Arial,sans-serif;
     font-size: 5rem;
     font-weight: 700;
     color: #000;
@@ -85,7 +109,7 @@ html {
 
 a {
     text-decoration: none;
-    color: $bg_color_3;
+    color: $text_link;
 }
 
 .theme__dark {
@@ -95,7 +119,7 @@ a {
 }
 
 .theme__bright {
-    background-color: $bg_color_6;
+    background-color: $bg_color_white;
     color: #000;
     @include flex_row();
 }
@@ -108,7 +132,7 @@ a {
     width: 100%;
     padding: 1rem;
     height: $nav_height;
-    background-color: $main_bg_color;
+    background-color: $nav_bg_color;
     box-shadow: $shadow_white;
     @include transition();
 }
@@ -174,6 +198,7 @@ a {
         font-size: 2rem;
         font-weight: 500;
         color: #FFF;
+        @include flex_column();
     
         a {
             color: $text_white;
@@ -229,8 +254,8 @@ a {
 
 .mobile__menu-icon {
     display: block;
-    width: 5rem;
-    height: 5rem;
+    width: 3rem;
+    height: 3rem;
 }
 
 .hidden {
@@ -258,7 +283,7 @@ a {
     position: fixed;
     top: $nav_height / 1.5;
     width: 100%;
-    background-color: $main_bg_color;
+    background-color: $nav_bg_color;
     border-radius: 0 0 1rem 1rem;
     padding-bottom: 1rem;
     opacity: 0;
@@ -286,30 +311,60 @@ a {
     opacity: 1;
 }
 
-.main_page {
-    width: 130rem;
-    margin-top: 20rem
+main {
+    width: $max_page_width;
+    @include flex_column(true);
+    padding-top: $nav_height + 8rem;
+}
+
+.icon {
+    color: #000000;
+    vertical-align: middle;
 }
 
 .home {
     @include flex_row();
     @include pages();
-    color: #000;
+    color: #000000;
     margin-bottom: 8rem;
 
+    .left, .right {
+        width: $max_page_width / 2;
+        @include flex_column();
+    }
+
     .portrait {
-        width: 50rem;
+        height: 45rem;
         @include full_radius(4rem);
-        margin-right: 5rem;
     }
 
     .container {
-        margin-left: 5rem;
         font-size: 2rem;
-        font-family: 'PT Sans';
+        font-family: Roboto,Helvetica,Arial,sans-serif;
+        // padding-left: 5rem;
 
         h2 {
             @include h2_font();
+            padding-left: 5rem;
+            padding-bottom: 1.5rem;
+        }
+
+        table {
+            font-size: 2rem;
+            tr {
+                td {
+                    padding: 1.5rem 0;
+                }
+
+                .column_1 {
+                    text-align: center;
+                    width: 4rem;
+                }
+
+                .column_2 {
+                    padding-left: 1rem;
+                }
+            }
         }
 
         ul {
@@ -325,26 +380,63 @@ a {
     }
 }
 
+@media screen and (max-width: $max_page_width_px) {
+    .home {
+        .left {
+            width: 50%;
+            padding-left: 1rem;
+        }
+
+        .right {
+            width: 50%;
+            padding-right: 1rem;
+        }
+    }
+}
+
 @media screen and (max-width: $mobile_width) {
-    .main_page {
+    main {
         width: 100%;
-        margin-top: 10rem;
+        padding-top: $nav_height / 1.5 + 2rem;
     }
     .home {
         flex-direction: column;
+        padding-left: 0;
+        padding-right: 0;
+
+        .left, .right {
+            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .left {
+            @include flex_row();
+        }
 
         .portrait {
             max-width: 50rem;
-            width: 90%;
+            height: 25rem;
             margin: 0 auto 5rem auto;
         }
 
         .container {
+            padding-left: 0;
             max-width: 90%;
             margin: 0;
             font-size: 1rem;
             h2 {
                 font-size: 3rem;
+                padding-bottom: 1rem;
+            }
+
+            table {
+                font-size: 1.8rem;
+            }
+
+            td {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
             }
     
             ul {
@@ -354,27 +446,11 @@ a {
     }
 }
 
-h2 {
-    @include h2_font();
-    font-size: 4rem;
-}
-
-@media screen and (max-width: $mobile_width) {
-    h2 {
-        font-size: 2.2rem;
-    }
-}
-
-p {
-    font-size: 2rem;
-    font-family: 'PT Sans';
-    line-height: 1.5;
-    margin-top: 2rem;
-}
-
-.sections {
+section {
     @include pages();
     margin-bottom: 5rem;
+    padding-top: 2rem;
+    width: 100%;
     display: block;
 
     ul {
@@ -406,12 +482,82 @@ p {
     }
 }
 
+@media screen and (max-width: $max_page_width_px) {
+    section {
+        padding: 0 2rem;
+    }
+}
+
 @media screen and (max-width: $mobile_width) {
-    .sections {
+    section {
+        padding: 0 5%;
+        max-width: 100%;
+    }
+}
+
+h2 {
+    @include h2_font();
+    font-size: 3.5rem;
+}
+
+@media screen and (max-width: $mobile_width) {
+    h2 {
+        font-size: 2.2rem;
+    }
+}
+
+p {
+    font-size: 2rem;
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+    line-height: 1.5;
+    margin-top: 2rem;
+}
+
+// .sections {
+//     @include pages();
+//     margin-bottom: 5rem;
+//     display: block;
+
+//     ul {
+//         margin-top: 2rem;
+//         font-size: 2rem;
+//         // square dots
+//         list-style-type: square;
+//         // make square dots smaller
+//         list-style-position: inside;
+//         box-sizing: border-box;
+
+//         li {
+//             margin: 1rem 0;
+//         }
+//     }
+
+//     ol {
+//         margin-top: 2rem;
+//         font-size: 2rem;
+//         // decimal numbers
+//         list-style-type: decimal;
+//         // make decimal numbers smaller
+//         list-style-position: inside;
+//         box-sizing: border-box;
+
+//         li {
+//             margin: 1rem 0;
+//         }
+//     }
+// }
+
+@media screen and (max-width: $mobile_width) {
+    sections {
         padding: 0 5%;
         max-width: 90%;
     }
 }
-main {
-    @include flex_column();
+
+.emphasis {
+    color: $text_emphasis;
+}
+
+.text_xl {
+    font-size: 2.5rem;
 }
